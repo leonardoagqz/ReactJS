@@ -1,0 +1,58 @@
+<!DOCTYPE html> <!--indica o tipo de documento, no caso html-->
+<html>
+
+<head> 
+    <meta charset="UTF-8"/>
+    <title>Extraindo funcionanlidades de um componente grande e criando pequenas funções</title>
+     <!--Adicionando o React a pagina-->
+     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body> 
+     <!---->
+    <div id="root"></div> 
+    
+    <!--Extraindo componentes-->   
+    <script type="text/babel">
+
+        function Avatar(props) {
+            return (
+                <img
+                    className="Avatar"
+                    src={props.user.avatarUrl}
+                    alt={props.user.name}
+                />
+            );
+        }
+
+        
+        function UserInfo(props) {
+            return (
+                <div className="UserInfo">
+                    <Avatar user={props.user} />
+                    <div className="UserInfo-name">{props.user.name}</div>
+                </div>
+            );
+        }
+
+
+        function Comment(props){
+            return (
+                <div className="Comment">
+                    <userInfo user={props.author}/>
+                    <div className="Comment-text">
+                        {props.text}
+                    </div>
+                    <div className="Comment-date">
+                        {formatDate(props.date)}
+                    </div>
+                </div>    
+            );
+        }
+
+    </script>
+</body>
+
+</html>
